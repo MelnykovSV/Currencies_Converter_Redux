@@ -1,9 +1,9 @@
 import * as S from "./ErrorTab.styled";
-import { useContext } from "react";
-import { CurrenciesRatesContext } from "../../App";
+import { selectError } from "../../redux/currencyRates/currencyRatesSlice";
+import { useSelector } from "react-redux";
 
 export const ErrorTab = () => {
-  const { error } = useContext(CurrenciesRatesContext);
+  const error = useSelector(selectError);
   return (
     <S.Container>
       <h2>Error {error.status}</h2>

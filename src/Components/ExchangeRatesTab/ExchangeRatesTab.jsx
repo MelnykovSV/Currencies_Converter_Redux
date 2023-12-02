@@ -1,10 +1,10 @@
 import * as S from "./ExchangeRatesTab.styled";
-import { useContext } from "react";
-import { CurrenciesRatesContext } from "../../App";
 import { DASHBOARD_CURRENCIES } from "../../constants";
+import { useSelector } from "react-redux";
+import { selectCurrencyRates } from "../../redux/currencyRates/currencyRatesSlice";
 
 export const ExchangeRatesTab = () => {
-  const currencyRates = useContext(CurrenciesRatesContext);
+  const currencyRates = useSelector(selectCurrencyRates);
   return (
     <S.Container>
       {currencyRates ? (

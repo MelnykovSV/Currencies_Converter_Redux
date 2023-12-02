@@ -1,11 +1,12 @@
 import * as S from "./CurrenciesConverterTab.styled";
-import { useContext, useState } from "react";
-import { CurrenciesRatesContext } from "../../App";
+import { useState } from "react";
 import { CurrencySelect, CurrencyValueInput } from "../../UI";
 import { convertCurrency } from "../../helpers";
+import { useSelector } from "react-redux";
+import { selectCurrencyRates } from "../../redux/currencyRates/currencyRatesSlice";
 
 export const CurrenciesConverterTab = () => {
-  const currencyRates = useContext(CurrenciesRatesContext);
+  const currencyRates = useSelector(selectCurrencyRates);
 
   const [currencyToSell, setCurrencyToSell] = useState("UAH");
   const [currencyToBuy, setCurrencyToBuy] = useState("USD");
