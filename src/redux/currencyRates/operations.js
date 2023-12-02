@@ -7,7 +7,7 @@ export const getCurrencyRates = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get(
-        `?apikey=${API_KEY}&base_currency=${BASE_CURRENCY}&currencies=${CURRENCIES.join(
+        `?apike=${API_KEY}&base_currency=${BASE_CURRENCY}&currencies=${CURRENCIES.join(
           ","
         )}`
       );
@@ -22,7 +22,7 @@ export const getCurrencyRates = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue({
         message: error.response.data.message,
-        code: error.response.status || null,
+        status: error.response.status || null,
       });
     }
   }
