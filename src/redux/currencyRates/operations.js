@@ -7,7 +7,7 @@ export const getCurrencyRates = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get(
-        `?apike=${API_KEY}&base_currency=${BASE_CURRENCY}&currencies=${CURRENCIES.join(
+        `?apikey=${API_KEY}&base_currency=${BASE_CURRENCY}&currencies=${CURRENCIES.join(
           ","
         )}`
       );
