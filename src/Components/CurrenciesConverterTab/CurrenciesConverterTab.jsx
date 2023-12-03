@@ -1,5 +1,5 @@
 import * as S from "./CurrenciesConverterTab.styled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CurrencySelect, CurrencyValueInput } from "../../UI";
 import { convertCurrency } from "../../helpers";
 import { useSelector } from "react-redux";
@@ -12,15 +12,21 @@ export const CurrenciesConverterTab = () => {
   const [currencyToBuy, setCurrencyToBuy] = useState("USD");
   const [valueToSell, setValueToSell] = useState(1);
   const [valueToBuy, setValueToBuy] = useState(
-    Number(
-      convertCurrency(
-        currencyRates,
-        currencyToSell,
-        valueToSell,
-        currencyToBuy
-      ).toFixed(2)
-    )
+    valueToSell === null
+      ? null
+      : Number(
+          convertCurrency(
+            currencyRates,
+            currencyToSell,
+            valueToSell,
+            currencyToBuy
+          ).toFixed(2)
+        )
   );
+
+  useEffect(() => {
+    console.log("!");
+  }, []);
 
   const currencyToSellSelectHandler = (currency) => {
     const valueToBuy = convertCurrency(
