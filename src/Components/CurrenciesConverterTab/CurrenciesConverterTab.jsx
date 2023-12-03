@@ -1,5 +1,5 @@
 import * as S from "./CurrenciesConverterTab.styled";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CurrencySelect, CurrencyValueInput } from "../../UI";
 import { convertCurrency } from "../../helpers";
 import { useSelector } from "react-redux";
@@ -23,10 +23,6 @@ export const CurrenciesConverterTab = () => {
           ).toFixed(2)
         )
   );
-
-  useEffect(() => {
-    console.log("!");
-  }, []);
 
   const currencyToSellSelectHandler = (currency) => {
     const valueToBuy = convertCurrency(
@@ -86,10 +82,12 @@ export const CurrenciesConverterTab = () => {
             <CurrencyValueInput
               value={valueToSell}
               changeHandler={valueToSellSelectHandler}
+              name="value-to-sell"
             />
             <CurrencySelect
               value={currencyToSell}
               changeHandler={currencyToSellSelectHandler}
+              name="currency-to-sell"
             />
           </S.InputsBlock>
         </S.ConverterBlock>
@@ -99,10 +97,12 @@ export const CurrenciesConverterTab = () => {
             <CurrencyValueInput
               value={valueToBuy}
               changeHandler={valueToBuySelectHandler}
+              name="value-to-buy"
             />
             <CurrencySelect
               value={currencyToBuy}
               changeHandler={currencyToBuySelectHandler}
+              name="currency-to-buy"
             />
           </S.InputsBlock>
         </S.ConverterBlock>

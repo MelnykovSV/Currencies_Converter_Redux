@@ -1,6 +1,6 @@
 import * as S from "./CurrencyValueInput.styled";
 
-export const CurrencyValueInput = ({ value, changeHandler }) => {
+export const CurrencyValueInput = ({ value, changeHandler, ...props }) => {
   return (
     <S.Container
       value={value === null ? "" : value}
@@ -11,6 +11,7 @@ export const CurrencyValueInput = ({ value, changeHandler }) => {
       onKeyDown={(e) =>
         ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()
       }
+      {...props}
     />
   );
 };
